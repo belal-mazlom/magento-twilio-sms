@@ -1,0 +1,12 @@
+.sms-block-btn{
+	background: #CCC;
+    padding: 4px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.counter-sms{
+	background: rgba(255, 193, 7, 0.32);
+    padding: 2px 10px;
+    margin-bottom: 10px;
+    display: block;
+}

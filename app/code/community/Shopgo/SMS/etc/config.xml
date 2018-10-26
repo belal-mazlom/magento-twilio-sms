@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * ShopGo
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ *
+ * @category    Shopgo
+ * @package     Shopgo_SMS
+ * @author      Shopgo <support@shopgo.me>
+ * @copyright   Copyright (c) 2015 ShopGo. (http://www.shopgo.me)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Shopgo_SMS>
+            <version>1.0.0</version>
+        </Shopgo_SMS>
+    </modules>
+    <adminhtml>
+        <layout>
+            <updates>
+                <sms>
+                    <file>shopgo/sms.xml</file>
+                </sms>
+            </updates>
+        </layout>
+    </adminhtml>
+    <global>
+        <helpers>
+            <sms>
+                <class>Shopgo_SMS_Helper</class>
+            </sms>
+        </helpers>
+        <models>
+            <sms>
+                <class>Shopgo_SMS_Model</class>
+            </sms>
+        </models>
+         <events>
+            <sales_order_place_after>
+                <observers>
+                    <shopgo_sms>
+                        <type>singleton</type>
+                        <class>sms/observer</class>
+                        <method>trackNewOrder</method>
+                    </shopgo_sms>
+                </observers>
+            </sales_order_place_after>
+            <sales_order_shipment_save_after>
+                <observers>
+                    <shopgo_sms>
+                        <type>singleton</type>
+                        <class>sms/observer</class>
+                        <method>changeOrderStatus</method>
+                    </shopgo_sms>
+                </observers>
+            </sales_order_shipment_save_after>
+        </events>
+    </global>
+</config>
